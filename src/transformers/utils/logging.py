@@ -29,7 +29,9 @@ from logging import (
     NOTSET,  # NOQA
     WARN,  # NOQA
     WARNING,  # NOQA
-    captureWarnings as _captureWarnings
+)
+from logging import (
+    captureWarnings as _captureWarnings,
 )
 from typing import Optional
 
@@ -126,7 +128,7 @@ def captureWarnings(capture):
     """
     Calls the `captureWarnings` method from the logging library to enable management of the warnings emitted by the
     `warnings` library.
-    
+
     Read more about this method here:
     https://docs.python.org/3/library/logging.html#integration-with-the-warnings-module
 
@@ -135,7 +137,7 @@ def captureWarnings(capture):
     Careful: this method also adds a handler to this logger if it does not already have one, and updates the logging
     level of that logger to the library's root logger.
     """
-    logger = get_logger('py.warnings')
+    logger = get_logger("py.warnings")
 
     if not logger.handlers:
         logger.addHandler(_default_handler)
